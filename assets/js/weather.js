@@ -1,6 +1,6 @@
 // Function to fetch weather data from OpenWeatherMap API
 function fetchWeather(city) {
-  const apiKey = "3d5ea1a77c82a4e2012f71d227541912"; // Replace with your actual API key
+  const apiKey = "3d5ea1a77c82a4e2012f71d227541912";
   const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
 
   fetch(apiUrl)
@@ -16,10 +16,28 @@ function fetchWeather(city) {
     });
 }
 
-// Function to display weather conditions for the city
+// Function to display current weather conditions for the city
 function displayWeather(data) {
-  // Implement logic to display current and future weather conditions
-  // Example: document.getElementById('current-weather').innerText = JSON.stringify(data);
+  const cityName = data.city.name;
+  const currentWeather = data.list[0]; // Current weather data
+
+  const date = new Date(currentWeather.dt * 1000); // Convert timestamp to date
+  const formattedDate = date.toLocaleDateString(); // Format date as string
+
+  const iconCode = currentWeather.weather[0].icon; // Weather icon code
+  const iconUrl = `http://openweathermap.org/img/wn/${iconCode}.png`; // Weather icon URL
+
+  const temperature = currentWeather.main.temp; // Temperature
+  const humidity = currentWeather.main.humidity; // Humidity
+  const windSpeed = currentWeather.wind.speed; // Wind speed
+
+  // Update HTML elements with weather information
+  document.getElementById("city-name").innerText = cityName;
+  document.getElementById("date").innerText = formattedDate;
+  document.getElementById("weather-icon").src = iconUrl;
+  document.getElementById("temperature").innerText = temperature;
+  document.getElementById("humidity").innerText = humidity;
+  document.getElementById("wind-speed").innerText = windSpeed;
 }
 
 // Function to add searched city to the search history
