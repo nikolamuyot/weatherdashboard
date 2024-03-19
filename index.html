@@ -10,31 +10,59 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Custom CSS file -->
   </head>
   <body>
-    <form id="city-form">
-      <input type="text" id="city-input" placeholder="Enter city name" />
-      <button type="submit">Search</button>
-    </form>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <!-- Search form -->
+          <form id="city-form" class="mb-4">
+            <div class="input-group">
+              <input
+                type="text"
+                id="city-input"
+                class="form-control"
+                placeholder="Enter city name"
+              />
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+              </div>
+            </div>
+          </form>
 
-    <div id="current-weather">
-      <h2>Current Weather</h2>
-      <p>City: <span id="city-name"></span></p>
-      <p>Date: <span id="current-date"></span></p>
-      <p>Weather Icon: <i id="current-weather-icon" class="fas"></i></p>
-      <p>Temperature: <span id="current-temperature"></span></p>
-      <p>Humidity: <span id="current-humidity"></span></p>
-      <p>Wind Speed: <span id="current-wind-speed"></span></p>
-    </div>
+          <!-- Current Weather Card -->
+          <div class="card mb-4">
+            <div class="card-body">
+              <!-- Current weather information -->
+              <h5 class="card-title" id="city-name"></h5>
+              <p class="card-text" id="current-date"></p>
+              <img id="current-weather-icon" class="mb-2" />
+              <p class="card-text">
+                Temperature: <span id="current-temperature"></span>
+              </p>
+              <p class="card-text">
+                Humidity: <span id="current-humidity"></span>
+              </p>
+              <p class="card-text">
+                Wind Speed: <span id="current-wind-speed"></span>
+              </p>
+            </div>
+          </div>
+        </div>
 
-    <div id="future-weather">
-      <h2>5-Day Forecast</h2>
-      <!-- Forecast items will be dynamically added here -->
+        <div class="col-md-6">
+          <!-- Future Weather Forecast -->
+          <div class="card">
+            <div class="card-body">
+              <!-- 5-day forecast information -->
+              <h5 class="card-title">5-Day Forecast</h5>
+              <div id="future-weather"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script
@@ -53,5 +81,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="assets/js/weather.js"></script>
+    <!-- Your JavaScript file -->
   </body>
 </html>
