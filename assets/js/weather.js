@@ -15,6 +15,16 @@ function fetchWeather(city) {
     });
 }
 
+function fetchhistory() {
+  var history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+  for (let i = 0; i < history.length; i++) {
+    let btnel = document.createElement("button");
+    btnel.textContent = history[i];
+    document.getElementById("history-btn").appendChild(btnel);
+  }
+}
+// fetchhistory();
+
 // Function to display current weather conditions and 5-day forecast for the city
 function displayWeather(data) {
   // Display current weather conditions
@@ -87,14 +97,19 @@ function addToSearchHistory(city) {
 
 // Function to display search history
 function displaySearchHistory(searchHistory) {
-  const searchHistoryElement = document.getElementById("search-history");
+  const searchHistoryElement = document.getElementById("history-btn");
   searchHistoryElement.innerHTML = ""; // Clear previous search history
 
   // Loop through the search history and create clickable elements for each city
   searchHistory.forEach((city) => {
     const cityElement = document.createElement("div");
     cityElement.textContent = city;
-    cityElement.classList.add("search-history-item");
+    cityElement.classList.add(
+      "search-history-item",
+      "btn",
+      "btn-primary",
+      "m-1"
+    );
     cityElement.addEventListener("click", () => {
       handleCityClick(city); // Fetch weather data when a city is clicked
     });
